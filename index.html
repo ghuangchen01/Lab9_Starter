@@ -6,7 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
-
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "1a5a23ca048a416ba4c929f11e21298c"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+                        
   <style>
     button {
       margin: 3px;
@@ -102,6 +109,92 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    errorBtns[0].addEventListener('click',function(){
+      console.log('Console log Demo');
+    })
+    errorBtns[1].addEventListener('click',function(){
+      let consoleError = 'Console Error';
+      console.error(consoleError);
+    })
+    errorBtns[2].addEventListener('click',function(){
+      console.count('Count ');
+    })
+    errorBtns[3].addEventListener('click',function(){
+      console.warn('Console warn Demo');
+    })
+    errorBtns[4].addEventListener('click',function(){
+      console.assert(1==3,'Console Assert demo');
+    })
+    errorBtns[5].addEventListener('click',function(){
+      console.clear();
+    })
+    errorBtns[6].addEventListener('click',function(){
+      console.dir(errorBtns[6]);
+    })
+    errorBtns[7].addEventListener('click',function(){
+      console.dirxml(errorBtns[7]);
+    })
+    errorBtns[8].addEventListener('click',function(){
+      console.group('Console Group Demo');
+    })
+    errorBtns[9].addEventListener('click',function(){
+      console.groupEnd();
+    })
+    errorBtns[10].addEventListener('click',function(){
+      const consoleTable = [
+        {name:'Guan', DOB:'01/01/2003'},
+        {name:'Jennie', DOB: '08/16/2021'},
+        {name: 'Nancy',DOB: '02/03/2004'},
+      ]
+      console.table(consoleTable);
+    })
+    errorBtns[11].addEventListener('click',function(){
+      console.time("Timer Demo");
+    })
+    errorBtns[12].addEventListener('click',function(){
+      console.timeEnd("Timer Demo");
+    })
+    errorBtns[13].addEventListener('click',function(){
+      function deepest(){
+        console.trace("Trace Demo");
+      }
+      function deeper(){
+        deepest();
+      }
+      function deep(){
+        deeper();
+      }
+      deep();
+    })
+    errorBtns[14].addEventListener('click',function(){
+      GlobalErro();     
+    })
+
+    try{
+      document.getElementById('paragraph').innerText = 'hope I exist';
+    }catch(error){
+      console.error('paragraph not exist');
+    }finally{
+      console.log('I am always here');
+    }
+
+    class customError extends Error{
+      constructor(message){
+        super(message);
+        this.name = 'Custom Error';
+      }
+    }
+    function testError(){
+      throw new customError("Custom error");
+    }
+    try{
+      testError();
+    }catch(error){
+      console.error(error.message);
+    }
+    window.addEventListener('error',function(){
+      console.log('Error Catched');
+    })
   </script>
 </body>
 
